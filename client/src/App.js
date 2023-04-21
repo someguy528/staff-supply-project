@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
 
@@ -15,7 +16,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Page Count: {count}</h1>
+        <Switch>
+          <Route path="/test">
+            <h1>Test Route</h1>
+          </Route>
+          <Route exact path="/">
+            <h1>Page Count: {count}</h1>
+          </Route>
+        </Switch>
       </header>
     </div>
   );
