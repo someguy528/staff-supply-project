@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
+import UserSettings from './components/UserSettings';
 
 function App() {
 
@@ -24,12 +25,15 @@ function App() {
           <Route path="/test">
             <h1>Test Route</h1>
           </Route>
-          <Route exact path="/">
-            {/* <h1>Page Count: {count}</h1> */}
-            <HomePage />
+          <Route path="/user" >
+            <UserSettings/>
           </Route>
           <Route exact path="/login" >
             <LoginPage />
+          </Route>
+          <Route exact path="/">
+            {/* <h1>Page Count: {count}</h1> */}
+            <HomePage />
           </Route>
         </Switch>
       </header>

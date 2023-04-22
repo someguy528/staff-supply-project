@@ -23,6 +23,7 @@ function NavBar(){
     return(
         <section>
             <NavLink to="/">Home</NavLink>
+            <NavLink to="/user"> User Settings </NavLink>
             <button onClick={handleLogout}> Logout </button>
         </section>
     )

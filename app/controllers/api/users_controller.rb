@@ -10,9 +10,13 @@ class Api::UsersController < ApplicationController
         render json: @user
     end
 
+    def update 
+
+    end
+
     private
     def user_params
-        params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :is_inventory_control)
+        params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :is_inventory_control, :avatar)
     end
 
 end

@@ -23,8 +23,9 @@ function HomePage() {
 
     return (
         <section>
-            {/* {user? <button onClick={handleLogout} >Logout</button> : null} */}
+            
             {user ? <h1>Welcome, {user.username} </h1> : <h1> Welcome, Guest</h1> }
+            {/* {user ? <button onClick={handleLogout} >Logout</button> : null} */}
             <h2>Page Count: {count}</h2>
         </section>
     )
