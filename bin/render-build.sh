@@ -7,6 +7,9 @@ rm -rf public
 npm install --prefix client && npm run build --prefix client
 cp -a client/build/. public/
 
+# experimental code to unset database_url
+unset DATABASE_URL
+
 # Build commands for back end
 bundle install
 bundle exec rake db:migrate 
