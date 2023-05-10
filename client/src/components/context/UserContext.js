@@ -5,13 +5,21 @@ const UserContext = React.createContext();
 
 function UserProvider({children}){
 
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
+    const [user, setUser] = useState({
+      currentUser: null,
+      currentAvatar: null
+    });
     console.log(user)
 
     useEffect(() => {
         fetch("/api/users/show").then((response) => {
           if (response.ok) {
-            response.json().then((user) => setUser(user));
+            // response.json().then((user) => setUser(user));
+            response.json().then((data) => setUser({
+              currentUser: data.user,
+              currentAvatar: data.avatar
+            }));
           }else{
             setUser(false)
           }

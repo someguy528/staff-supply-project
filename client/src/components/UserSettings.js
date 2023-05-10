@@ -9,7 +9,9 @@ function UserSettings() {
     const [userForm, setUserForm] = useState({
         avatar: {}
     })
+    // const {user} = useContext(UserContext)
     const {user} = useContext(UserContext)
+    const {currentUser} = user
     const { url } = useRouteMatch()
 
     function handleFormChange(e) {
@@ -24,16 +26,34 @@ function UserSettings() {
         }
 
     }
+    console.log(currentUser)
 
     function uploadFile(file, user) {
         // const upload = new DirectUpload(file, 'http://localhost:3000/api/rails/active_storage/direct_uploads')
-        const upload = new DirectUpload(file, 'http://localhost:3000/rails/active_storage/direct_uploads')
+        // const upload = new DirectUpload(file, 'http://localhost:3000/rails/active_storage/direct_uploads')
+        // const upload = new DirectUpload(file, '/rails/active_storage/direct_uploads')
+        const upload = new DirectUpload(file, '/api/direct_uploads')
         console.log(upload)
         upload.create((error, blob) => {
             if(error){
                 console.log(error)
             }else{
-                console.log("No Errors!")
+                // console.log("No Errors!")
+                // debugger
+                // console.log(file)
+                fetch(`/api/users/${currentUser.id}`,{
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type':'application/json',
+                        'Accept':'application/json'
+                    },
+                    body: JSON.stringify({avatar: blob.signed_id})
+                })
+                .then(resp=>resp.json())
+                .then(data=> 
+                    console.log(data)
+
+                    )
             }
         })
     }
@@ -46,7 +66,7 @@ function UserSettings() {
         // data.append("user[avatar]", e.target.avatar.files[0])
         // console.log(data)
         // console.log(e.target.image.files[0])
-        fetch(`/api/users/${user.id}`)
+        fetch(`/api/users/${currentUser.id}`)
         .then(resp=>{
             if(resp.ok){
                 resp.json().then(data=>{
@@ -74,6 +94,8 @@ function UserSettings() {
                         <button type="submit" > Change Settings </button>
                         <div> <Link to="/user/change_password" >Change Password</Link> </div>
                     </form>
+                    test img
+                    { user.currentAvatar ? <img src={`${user.currentAvatar}`} /> : null } 
 
                 </Route>
 

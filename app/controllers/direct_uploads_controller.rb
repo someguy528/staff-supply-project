@@ -15,3 +15,5 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
     end
 
 end
+
+# this controller is depreceiated in favor of the direct_uploads_controller located in the api folder

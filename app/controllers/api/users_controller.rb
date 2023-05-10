@@ -7,11 +7,18 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        render json: @user
+        # byebug
+        avatar = rails_blob_path(@user.avatar)
+        # render json: @user
+        render json: {user: @user, avatar: avatar}
     end
 
-    def update 
-
+    def update
+        user = User.find(params[:id])
+        user.update(avatar: params[:avatar])
+        avatar_url = rails_blob_path(user.avatar)
+        # byebug
+        render json: {user: user, avatar_url: avatar_url}
     end
 
     private

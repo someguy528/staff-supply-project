@@ -43,5 +43,9 @@ module StaffSupplyProject
 
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # # added code to deal with invalidauthenticitytoken error, but doesnt work -Brandon
+    # config.action_view.embed_authenticity_token_in_remote_forms = true
+
   end
 end
