@@ -20,7 +20,7 @@ function App() {
 
   const {user} = useContext(UserContext)
 
-  if(user.currentUser === null){return (<h1>Loading...</h1>)}
+  if(user.currentUser === null){return (<h1 className='App-header' >Loading...</h1>)}
 
   return (
     <div className="App">
