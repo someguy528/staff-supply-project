@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Switch, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
 import UserSettings from './components/UserSettings';
+import { UserContext } from './components/context/UserContext';
 
 function App() {
 
@@ -16,6 +17,10 @@ function App() {
   //     .then((r) => r.json())
   //     .then((data) => setCount(data.count));
   // }, []);
+
+  const {user} = useContext(UserContext)
+
+  if(user.currentUser === null){return (<h1>Loading...</h1>)}
 
   return (
     <div className="App">

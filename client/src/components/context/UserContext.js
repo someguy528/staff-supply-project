@@ -10,7 +10,7 @@ function UserProvider({children}){
       currentUser: null,
       currentAvatar: null
     });
-    console.log(user)
+    
 
     useEffect(() => {
         fetch("/api/users/show").then((response) => {
@@ -25,6 +25,8 @@ function UserProvider({children}){
           }
         });
       }, []);
+
+    console.log(user)
 
     return (
         <UserContext.Provider value={{user, setUser}}>
