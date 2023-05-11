@@ -52,3 +52,6 @@ end
 
 
 gem "active_model_serializers", "~> 0.10.13"
+
+# active storage cloud on aws s3 amazon cloud service
+gem "aws-sdk-s3", require: false
