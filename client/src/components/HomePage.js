@@ -21,19 +21,11 @@ function HomePage() {
     //     })
     // }
 
-
-    if(user === null ){return (
-        <section>
-            
-            <h1> Loading </h1>
-            {/* {user ? <button onClick={handleLogout} >Logout</button> : null} */}
-            <h2>Page Count: {count}</h2>
-        </section>
-    )}
-
     return (
         <section>
-            {user ? <h1>Welcome, {user.currentUser.username} </h1> : <h1> Welcome, Guest</h1>} 
+            {/* {user.currentUser !== false ? <h1>Welcome, {user.currentUser.username} </h1> : <h1> Welcome, Guest</h1>}  */}
+            {user.currentUser.username ? <h1>Welcome, {user.currentUser.username} </h1> : <h1> Welcome, Guest</h1>} 
+            { user.currentAvatar ? <img src={`${user.currentAvatar}`} /> : null } 
             {/* {user ? <button onClick={handleLogout} >Logout</button> : null} */}
             <h2>Page Count: {count}</h2>
         </section>

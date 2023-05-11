@@ -28,12 +28,18 @@ function LoginPage(){
         }).then(resp => {
             if(resp.ok){
                 resp.json().then((data) => {
-                    setUser(data);
-                    // fetchCartUser();
+                    console.log(data)
+                    setUser({
+                        currentUser: data.user,
+                        currentAvatar: data.avatar
+                    });
                     history.push("/")
                 })
             } else {
-                resp.json().then(error => setErrors(error.errors))
+                resp.json().then(error => 
+                    console.log(error) 
+                    // setErrors(error.errors)
+                    )
             }
         })
     }

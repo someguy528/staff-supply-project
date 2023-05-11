@@ -5,7 +5,9 @@ class Api::SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
-            render json: user, status: :created
+            # render json: user, status: :created
+            avatar = rails_blob_path(user.avatar)
+            render json: {user: user, avatar: avatar }, status: :created
         else render json: {errors: ["Wrong username/password"]}, status: :unauthorized
         end
     end

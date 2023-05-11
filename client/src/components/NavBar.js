@@ -10,16 +10,21 @@ function NavBar(){
         fetch("/api/logout", {
             method: "DELETE"
         }).then(()=>{
-            setUser(false);
+            setUser({
+                currentUser: false,
+                currentAvatar: false
+              })
+            history.push("/");
         })
     }
 
-    if(!user)return(
+    if(!user.currentUser)return(
         <section>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/login">Login</NavLink>
         </section>
     )
+    
     return(
         <section>
             <NavLink to="/">Home</NavLink>
