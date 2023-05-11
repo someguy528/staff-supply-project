@@ -21,7 +21,10 @@ function UserProvider({children}){
               currentAvatar: data.avatar
             }));
           }else{
-            setUser(false)
+            setUser({
+              currentUser: false,
+              currentAvatar: false
+            })
           }
         });
       }, []);
