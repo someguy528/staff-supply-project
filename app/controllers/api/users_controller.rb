@@ -1,6 +1,11 @@
 class Api::UsersController < ApplicationController
     skip_before_action :authorize, only: [:create, :index]
 
+    def index
+        users = User.all
+        render json: users
+    end
+
     def create
         user = User.create!(user_params)
         render json: user, status: :created
@@ -19,13 +24,14 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    def update
-        user = User.find(params[:id])
-        user.update(avatar: params[:avatar])
-        avatar_url = rails_blob_path(user.avatar)
-        # byebug
-        render json: {user: user, avatar_url: avatar_url}
-    end
+    ## this code was moved to a separate controller in user_images for image uploads only
+    # def update
+    #     user = User.find(params[:id])
+    #     user.update(avatar: params[:avatar])
+    #     avatar_url = rails_blob_path(user.avatar)
+    #     ## byebug
+    #     render json: {user: user, avatar_url: avatar_url}
+    # end
 
     private
     def user_params

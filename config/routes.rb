@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do 
     resources :users, only: [:create, :update, :index, :show, :delete]
+    resources :user_images, only: [:update]
 
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"

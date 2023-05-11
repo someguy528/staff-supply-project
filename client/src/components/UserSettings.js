@@ -44,7 +44,9 @@ function UserSettings() {
                 // console.log("No Errors!")
                 // debugger
                 // console.log(file)
-                fetch(`/api/users/${currentUser.id}`,{
+                
+                // ## cant use vips image variant processor at the moment so resizing images on front end
+                fetch(`/api/user_images/${currentUser.id}`,{
                     method: 'PUT',
                     headers: {
                         'Content-Type':'application/json',
