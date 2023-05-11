@@ -6,11 +6,17 @@ class Api::UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    # def show
+    #     avatar = rails_blob_path(@user.avatar)
+    #     render json: {user: @user, avatar: avatar}
+    # end
     def show
-        # byebug
-        avatar = rails_blob_path(@user.avatar)
-        # render json: @user
-        render json: {user: @user, avatar: avatar}
+        if @user.avatar.attached?
+            avatar = rails_blob_path(user.avatar)
+            render json: {user: @user, avatar: avatar }
+        else
+            render json: {user: @user, avatar: null}
+        end
     end
 
     def update
