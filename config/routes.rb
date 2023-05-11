@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
-    # post 'rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+    # unknown if needed to namespace active storage
+    options '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
     resources :direct_uploads, only: [:create]
     
     
   end
   
-  options '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+  # options '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   get '/hello', to: 'application#hello_world'
 
   get '*path',

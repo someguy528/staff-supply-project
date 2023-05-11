@@ -11,7 +11,9 @@ function UserSettings() {
     })
     // const {user} = useContext(UserContext)
     const {user} = useContext(UserContext)
+    
     const {currentUser} = user
+    const {setUser} = useContext(UserContext)
     const { url } = useRouteMatch()
 
     function handleFormChange(e) {
@@ -27,6 +29,7 @@ function UserSettings() {
 
     }
     console.log(currentUser)
+    console.log(user)
 
     function uploadFile(file, user) {
         // const upload = new DirectUpload(file, 'http://localhost:3000/api/rails/active_storage/direct_uploads')
@@ -50,9 +53,12 @@ function UserSettings() {
                     body: JSON.stringify({avatar: blob.signed_id})
                 })
                 .then(resp=>resp.json())
-                .then(data=> 
-                    console.log(data)
-
+                .then(data=> {
+                    console.log(data);
+                    setUser({
+                        currentUser: currentUser,
+                        currentAvatar: data.avatar_url
+                    }) }
                     )
             }
         })

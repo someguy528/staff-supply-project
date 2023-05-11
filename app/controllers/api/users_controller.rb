@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
     # end
     def show
         if @user.avatar.attached?
-            avatar = rails_blob_path(user.avatar)
+            avatar = rails_blob_path(@user.avatar)
             render json: {user: @user, avatar: avatar }
         else
             render json: {user: @user, avatar: null}
