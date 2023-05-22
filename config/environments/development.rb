@@ -31,10 +31,11 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  # config.active_storage.service = :local
+  config.active_storage.service = :local
 
-  ## testing bucket for production
-  config.active_storage.service = :amazon
+  ### testing bucket for production, learn how to make this work for local first before production
+  ##  switching back to local since production requires use of amazon personal bucket, local allows cloning for personal use
+  #   config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
