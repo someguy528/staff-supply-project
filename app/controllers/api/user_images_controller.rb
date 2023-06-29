@@ -2,6 +2,10 @@
 class Api::UserImagesController < Api::UsersController
     def update
         user = User.find(params[:id])
+        # byebug
+        if user.avatar
+            user.avatar.destroy
+        end
         user.update(avatar: params[:avatar])
         avatar_url = rails_blob_path(user.avatar)
         ## cant access vips image processor, maybe find how to use thumbnail resize variant one day

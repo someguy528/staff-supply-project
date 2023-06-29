@@ -93,7 +93,6 @@ function UserSettings() {
             <Switch>
 
                 <Route exact path={`${url}`} >
-
                     <h1>User Settings</h1>
                     <form onSubmit={handleUserSettingsSubmit} >
                         <label>Change Avatar: <br /> </label>
@@ -104,13 +103,11 @@ function UserSettings() {
                     </form>
                     test img
                     { user.currentAvatar ? <img src={`${user.currentAvatar}`} /> : null } 
-
                 </Route>
 
                 <Route exact path={`${url}/change_password`} >
                     <ChangePasswordPage />
                 </Route>
-
 
             </Switch>
 

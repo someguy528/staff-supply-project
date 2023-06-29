@@ -7,6 +7,8 @@ import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
 import UserSettings from './components/UserSettings';
 import { UserContext } from './components/context/UserContext';
+import CreateUser from './components/CreateUser';
+import UsersList from './components/UsersList';
 
 function App() {
 
@@ -32,6 +34,12 @@ function App() {
           </Route>
           <Route path="/user" >
             <UserSettings/>
+          </Route>
+          <Route exact path="/create-user" >
+            <CreateUser/>
+          </Route>
+          <Route exact path="/users-list" >
+            <UsersList/>
           </Route>
           <Route exact path="/login" >
             <LoginPage />

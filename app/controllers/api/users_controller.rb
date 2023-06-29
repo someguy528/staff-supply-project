@@ -2,8 +2,16 @@ class Api::UsersController < ApplicationController
     skip_before_action :authorize, only: [:create, :index]
 
     def index
-        users = User.all
-        render json: users
+        users = User.all 
+        all_users = users.collect do |u|
+            if u.avatar.attached?
+                avatar = rails_blob_path(u.avatar)
+                {user: u, avatar: avatar }
+            else
+                {user: u, avatar: null}
+            end
+        end
+        render json: all_users
     end
 
     def create

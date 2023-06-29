@@ -17,11 +17,21 @@ function NavBar(){
             history.push("/");
         })
     }
-
+    
     if(!user.currentUser)return(
         <section>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/login">Login</NavLink>
+        </section>
+    )
+
+    if(user.currentUser.is_admin === true )return(
+        <section>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/user"> User Settings </NavLink>
+            <NavLink to="/create-user"> Create User </NavLink>
+            <NavLink to="/users-list"> Users List </NavLink>
+            <button onClick={handleLogout}> Logout </button>
         </section>
     )
     
